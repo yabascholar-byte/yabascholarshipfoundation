@@ -61,7 +61,7 @@ categoryButtons.forEach(btn=>{
                     const show = img.dataset.category===currentCategory && img.dataset.year===currentYear;
                     img.style.display = show ? 'block' : 'none';
                     img.classList.remove('show');
-                    if(show) setTimeout(()=>img.classList.add('show'),50);
+                    if(show) setTimeout(()=>img.classList.add('show'),50 );
                 });
             });
         });
@@ -110,3 +110,31 @@ function copyGCash() {
         });
     }
 }
+
+// ==========================
+// Sponsor Modal
+// ==========================
+function openSponsor(name, image, description){
+
+    const modal = document.getElementById('sponsorModal');
+
+    document.getElementById('modal-name').innerText = name;
+    document.getElementById('modal-img').src = image;
+    document.getElementById('modal-description').innerText = description;
+
+    modal.style.display = 'flex';
+}
+
+function closeSponsor(){
+    document.getElementById('sponsorModal').style.display = 'none';
+}
+
+// Close when clicking outside
+window.addEventListener('click', function(e){
+
+    const modal = document.getElementById('sponsorModal');
+
+    if(e.target === modal){
+        closeSponsor();
+    }
+});
